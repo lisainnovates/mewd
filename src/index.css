@@ -1,0 +1,54 @@
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@300;400;600;700;800&display=swap');
+
+:root {
+  /* Sailor Moon inspired color palette */
+  --sailor-pink: #ff69b4;
+  --sailor-blue: #1e90ff;
+  --sailor-teal: #4ecdc4;
+  --sailor-gold: #ffd700;
+  --sailor-lavender: #e6e6fa;
+  --sailor-peach: #ffcccb;
+  --sailor-sky: #87ceeb;
+  --sailor-mint: #98fb98;
+  
+  /* Text colors */
+  --text-dark: #2c3e50;
+  --text-medium: #7f8c8d;
+  --text-light: #ecf0f1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

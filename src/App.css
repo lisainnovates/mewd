@@ -1,0 +1,980 @@
+
+/* Main mood tracker styles */
+.mood-tracker {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.mood-selection h2 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 2.5rem;
+  color: var(--text-dark);
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.mood-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 3px solid rgba(255, 105, 180, 0.3);
+  border-radius: 20px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.mood-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+  border-color: var(--sailor-pink);
+}
+
+.pokemon-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.daily-stats {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+  min-width: 120px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 105, 180, 0.3);
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--sailor-pink);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  font-weight: 600;
+}
+
+.todays-mood {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 1rem 2rem;
+  margin: 1rem 0;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 215, 0, 0.5);
+}
+
+.todays-mood p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+}
+
+.mood-entry textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid rgba(255, 105, 180, 0.3);
+  border-radius: 15px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  resize: vertical;
+  margin-bottom: 1rem;
+}
+
+.save-button {
+  background: linear-gradient(135deg, var(--sailor-pink), var(--sailor-blue));
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+}
+
+.save-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+}
+
+.mood-history {
+  margin-top: 3rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 25px;
+  padding: 2rem;
+  backdrop-filter: blur(15px);
+  border: 3px solid rgba(255, 105, 180, 0.3);
+}
+
+.mood-history h3 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 2rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.weekly-summary {
+  background: rgba(255, 215, 0, 0.2);
+  border-radius: 15px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.history-entry {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 105, 180, 0.2);
+}
+
+.history-pokemon-image {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.history-content {
+  flex: 1;
+  text-align: left;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.history-date {
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  font-weight: 600;
+}
+
+.history-mood {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.history-note {
+  font-style: italic;
+  color: var(--text-medium);
+  font-size: 0.9rem;
+}
+
+.App-header h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 3.5rem;
+  color: var(--sailor-pink);
+  margin: 0 0 1rem 0;
+  text-shadow: 0 3px 6px rgba(255, 255, 255, 0.8);
+}
+
+.App-header p {
+  font-size: 1.3rem;
+  color: var(--text-medium);
+  margin: 0 0 2rem 0;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .mood-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  
+  .daily-stats {
+    gap: 0.5rem;
+  }
+  
+  .stat-card {
+    min-width: 100px;
+    padding: 1rem;
+  }
+  
+  .App-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .mood-selection h2 {
+    font-size: 2rem;
+  }
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Nunito:wght@300;400;600;700&display=swap');
+
+:root {
+  --sailor-pink: #F8BBD9;
+  --sailor-blue: #B4D7FF;
+  --sailor-teal: #A8E6CF;
+  --sailor-gold: #FFF2B3;
+  --sailor-lavender: #E6E6FA;
+  --sailor-mint: #C8F7C5;
+  --sailor-peach: #FFD6CC;
+  --sailor-sky: #E0F6FF;
+  --title-pink: #E91E63;
+  --title-blue: #3F51B5;
+  --title-purple: #9C27B0;
+  --text-dark: #2C3E50;
+  --text-medium: #34495E;
+}
+
+* {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="%23FF4444" stroke="%23000000" stroke-width="2"/><circle cx="16" cy="16" r="14" fill="url(%23pokeball)" stroke="%23000000" stroke-width="2"/><defs><linearGradient id="pokeball" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%23FF4444;stop-opacity:1" /><stop offset="45%" style="stop-color:%23FF4444;stop-opacity:1" /><stop offset="50%" style="stop-color:%23000000;stop-opacity:1" /><stop offset="55%" style="stop-color:%23FFFFFF;stop-opacity:1" /><stop offset="100%" style="stop-color:%23FFFFFF;stop-opacity:1" /></linearGradient></defs><circle cx="16" cy="16" r="4" fill="%23000000" stroke="%23000000" stroke-width="1"/><circle cx="16" cy="16" r="2" fill="%23FFFFFF"/><rect x="2" y="14" width="28" height="4" fill="%23000000"/></svg>'), auto !important;
+}
+
+/* Main App styles */
+.App {
+  text-align: center;
+  min-height: 100vh;
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(135deg, 
+    var(--sailor-lavender) 0%, 
+    var(--sailor-peach) 25%, 
+    var(--sailor-sky) 50%, 
+    var(--sailor-mint) 75%, 
+    var(--sailor-lavender) 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 105, 180, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(30, 144, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.App {
+  text-align: center;
+  min-height: 100vh;
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.floating-decorations {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-decorations > div {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.7;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+.floating-heart {
+  top: 10%;
+  left: 5%;
+  animation: float 6s ease-in-out infinite, sparkleRotate 4s linear infinite;
+}
+
+.floating-star {
+  top: 20%;
+  right: 10%;
+  animation: float 8s ease-in-out infinite reverse, twinkle 2s ease-in-out infinite;
+}
+
+.floating-sparkle {
+  bottom: 30%;
+  left: 10%;
+  animation: sparkle 4s ease-in-out infinite, bounce 3s ease-in-out infinite;
+}
+
+.floating-flower {
+  top: 60%;
+  right: 5%;
+  animation: float 7s ease-in-out infinite, sway 5s ease-in-out infinite;
+}
+
+.floating-rainbow {
+  bottom: 10%;
+  right: 20%;
+  animation: float 9s ease-in-out infinite reverse, rainbow 6s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+  25% { transform: scale(1.3) rotate(90deg); opacity: 1; }
+  50% { transform: scale(0.8) rotate(180deg); opacity: 0.4; }
+  75% { transform: scale(1.2) rotate(270deg); opacity: 0.9; }
+}
+
+@keyframes sparkleRotate {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-10px); }
+  50% { transform: translateY(-5px); }
+  75% { transform: translateY(-15px); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes rainbow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+.App-header {
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 30px;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 
+    0 8px 32px rgba(255, 105, 180, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 0 20px rgba(255, 215, 0, 0.2);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+  z-index: 2;
+  animation: headerGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes headerGlow {
+  0% { box-shadow: 0 8px 32px rgba(255, 105, 180, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 215, 0, 0.2); }
+  100% { box-shadow: 0 8px 32px rgba(255, 105, 180, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 30px rgba(255, 215, 0, 0.4); }
+}
+
+.App-header::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, var(--sailor-pink), var(--sailor-blue), var(--sailor-teal), var(--sailor-gold));
+  border-radius: 33px;
+  z-index: -1;
+  animation: borderShimmer 3s linear infinite;
+}
+
+@keyframes borderShimmer {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+.App-header h1 {
+  margin: 0 0 1rem 0;
+  font-family: 'Fredoka One', cursive;
+  font-size: 4rem;
+  background: linear-gradient(45deg, #E91E63, #3F51B5, #9C27B0, #FF9800);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 300% 300%;
+  letter-spacing: -2px;
+  animation: shimmer 3s ease-in-out infinite alternate, textFloat 4s ease-in-out infinite;
+  filter: 
+    drop-shadow(0 0 3px rgba(255, 255, 255, 1))
+    drop-shadow(0 0 6px rgba(255, 255, 255, 0.8))
+    drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4))
+    drop-shadow(0 0 12px rgba(233, 30, 99, 0.4));
+  position: relative;
+  z-index: 10;
+  will-change: transform, filter;
+}
+
+@keyframes shimmer {
+  0% { 
+    background-position: 0% 50%; 
+    filter: 
+      hue-rotate(0deg) 
+      drop-shadow(0 0 2px rgba(255, 255, 255, 0.9))
+      drop-shadow(0 0 4px rgba(255, 255, 255, 0.7))
+      drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5))
+      drop-shadow(0 0 15px rgba(255, 20, 147, 0.6));
+  }
+  100% { 
+    background-position: 100% 50%; 
+    filter: 
+      hue-rotate(30deg) 
+      drop-shadow(0 0 2px rgba(255, 255, 255, 0.9))
+      drop-shadow(0 0 4px rgba(255, 255, 255, 0.7))
+      drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5))
+      drop-shadow(0 0 15px rgba(65, 105, 225, 0.6));
+  }
+}
+
+@keyframes textFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+
+.App-header p {
+  font-size: 1.4rem;
+  color: var(--text-medium);
+  opacity: 0.9;
+  font-weight: 500;
+  margin: 0 0 2rem 0;
+  animation: fadeGlow 3s ease-in-out infinite alternate;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes fadeGlow {
+  0% { opacity: 0.9; text-shadow: none; }
+  100% { opacity: 1; text-shadow: 0 0 10px rgba(32, 178, 170, 0.3); }
+}
+
+.daily-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1.2rem;
+  max-width: 600px;
+  margin: 2rem auto 0 auto;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  padding: 1.8rem 1.2rem;
+  text-align: center;
+  border: 3px solid transparent;
+  backdrop-filter: blur(15px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, var(--sailor-pink), var(--sailor-blue), var(--sailor-teal));
+  border-radius: 28px;
+  z-index: -1;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(255, 105, 180, 0.4);
+}
+
+.stat-card:hover::before {
+  opacity: 1;
+  animation: statGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes statGlow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(180deg); }
+}
+
+.stat-number {
+  font-size: 2.8rem;
+  font-weight: 700;
+  font-family: 'Fredoka One', cursive;
+  color: var(--text-dark);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  animation: numberPulse 3s ease-in-out infinite;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes numberPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  color: var(--text-medium);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.todays-mood {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  margin-top: 2rem;
+  border: 2px solid rgba(255, 105, 180, 0.4);
+  animation: todayGlow 4s ease-in-out infinite alternate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todays-mood p {
+  margin: 0;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes todayGlow {
+  0% { box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2); }
+  100% { box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4); }
+}
+
+.mood-tracker {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.mood-selection h2 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 2.2rem;
+  color: var(--text-dark);
+  margin-bottom: 2rem;
+  animation: titleBounce 3s ease-in-out infinite;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes titleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.mood-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 3px solid transparent;
+  border-radius: 25px;
+  padding: 2rem 1.5rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(15px);
+}
+
+.mood-card:focus {
+  outline: 3px solid var(--sailor-pink);
+  outline-offset: 2px;
+  transform: translateY(-5px) scale(1.02);
+}
+
+.mood-card::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 28px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mood-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+}
+
+.mood-card:hover::before {
+  opacity: 1;
+  background: linear-gradient(45deg, var(--sailor-pink), var(--sailor-blue), var(--sailor-teal), var(--sailor-gold));
+  animation: cardGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes cardGlow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+.pokemon-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.mood-card:hover .pokemon-image {
+  transform: scale(1.2) rotate(5deg);
+  filter: drop-shadow(0 8px 16px rgba(255, 105, 180, 0.3));
+}
+
+.mood-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+.mood-pokemon {
+  font-size: 1rem;
+  color: var(--text-medium);
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+.mood-entry {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  padding: 2.5rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  border: 3px solid rgba(255, 105, 180, 0.4);
+  backdrop-filter: blur(15px);
+  animation: entryAppear 0.5s ease-out;
+}
+
+@keyframes entryAppear {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.selected-mood-display {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 105, 180, 0.1);
+  border-radius: 20px;
+}
+
+.selected-pokemon-image {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  animation: selectedPulse 2s ease-in-out infinite;
+}
+
+@keyframes selectedPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.selected-mood-display h3 {
+  font-family: 'Fredoka One', cursive;
+  color: var(--text-dark);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.8rem;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+.selected-mood-display p {
+  color: var(--text-medium);
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+textarea {
+  width: 100%;
+  padding: 1.5rem;
+  border: 3px solid rgba(255, 105, 180, 0.3);
+  border-radius: 20px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+  resize: vertical;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--sailor-pink);
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+  transform: scale(1.02);
+}
+
+.save-button {
+  background: linear-gradient(45deg, var(--sailor-pink), var(--sailor-blue));
+  color: white;
+  border: none;
+  padding: 1.2rem 2.5rem;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Fredoka One', cursive;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.save-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.save-button:hover,
+.save-button:focus {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4);
+  outline: 3px solid var(--sailor-blue);
+  outline-offset: 2px;
+}
+
+.save-button:hover::before {
+  left: 100%;
+}
+
+.mood-history {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 2.5rem;
+  margin-top: 3rem;
+  border: 3px solid rgba(255, 105, 180, 0.4);
+  position: relative;
+}
+
+.mood-history::before {
+  content: '✨📖✨';
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  font-size: 1.5rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.mood-history h3 {
+  font-family: 'Fredoka One', cursive;
+  color: var(--text-dark);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.weekly-summary {
+  background: rgba(255, 105, 180, 0.1);
+  padding: 1.5rem;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  border: 2px solid rgba(255, 105, 180, 0.3);
+}
+
+.weekly-summary p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.history-entry {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  border: 2px solid rgba(255, 105, 180, 0.2);
+  transition: all 0.3s ease;
+}
+
+.history-entry:hover {
+  transform: translateX(10px);
+  border-color: var(--sailor-pink);
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+}
+
+.history-pokemon-image {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+}
+
+.history-content {
+  flex: 1;
+  text-align: left;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.history-date {
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+.history-mood {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.history-note {
+  font-style: italic;
+  color: var(--text-medium);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+  .App {
+    padding: 1rem;
+  }
+  
+  .App-header h1 {
+    font-size: 3rem;
+  }
+  
+  .mood-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .daily-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .selected-mood-display {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .history-entry {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .history-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mood-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .daily-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .App-header h1 {
+    font-size: 2.5rem;
+  }
+}
