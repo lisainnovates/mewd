@@ -1,5 +1,9 @@
 # mewd tracker
 
-watch your mood evolve with this pokémon-themed react app: https://lisainnovates.github.io/mewd/
+track your mood with the power of pokémon! watch them evolve day by day
 
-*made with replit*
+🐱 inspired by mew
+
+try it here: https://lisainnovates.github.io/mewd/
+
+*made with replit and GPT-4⚡✨*
