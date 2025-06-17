@@ -1,0 +1,26 @@
+modules = ["nodejs-14"]
+run = "npm run start"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+build = ["sh", "-c", "npm run build"]
+deploymentTarget = "static"
+publicDir = "public"
+
+[workflows]
+runButton = "Start App"
+
+[[workflows.workflow]]
+name = "Start App"
+author = 43905821
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm start"
+
+[[ports]]
+localPort = 3000
+externalPort = 80
