@@ -1,89 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import './App.css';
-
-interface Mood {
-  id: string;
-  name: string;
-  pokemon: string;
-  emoji: string;
-  color: string;
-  imageUrl: string;
-}
-
-const moods: Mood[] = [
-  { 
-    id: '1', 
-    name: 'Happy', 
-    pokemon: 'Pikachu', 
-    emoji: '😊', 
-    color: '#FFD700',
-    imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'
-  },
-  { 
-    id: '2', 
-    name: 'Excited', 
-    pokemon: 'Eevee', 
-    emoji: '🤩', 
-    color: '#FF6B6B',
-    imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png'
-  },
-  { 
-    id: '3', 
-    name: 'Calm', 
-    pokemon: 'Snorlax', 
-    emoji: '😌', 
-    color: '#4ECDC4',
-    imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png'
-  },
-  { 
-    id: '4', 
-    name: 'Confused', 
-    pokemon: 'Psyduck', 
-    emoji: '😵‍💫', 
-    color: '#95A5A6',
-    imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/54.png'
-  },
-  { 
-    id: '5', 
-    name: 'Angry', 
-    pokemon: 'Charmander', 
-    emoji: '😠', 
-    color: '#E74C3C',
-    imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png'
-  },
-  { 
-    id: '6', 
-    name: 'Anxious', 
-    pokemon: 'Meowth', 
-    emoji: '😰', 
-    color: '#7B1FA2',
-    imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/52.png'
-  },
-  { 
-    id: '7', 
-    name: 'Tired', 
-    pokemon: 'Slowpoke', 
-    emoji: '😴',
-    color: '#9B59B6',
-    imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/79.png'
-  },
-  { 
-    id: '8', 
-    name: 'Energetic', 
-    pokemon: 'Jolteon', 
-    emoji: '⚡', 
-    color: '#F39C12',
-    imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/135.png'
-  },
-  { 
-    id: '9', 
-    name: 'Dreamy', 
-    pokemon: 'Clefairy', 
-    emoji: '🌙', 
-    color: '#FF69B4',
-    imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/35.png'
-  }
-];
+import { moods, type Mood } from './data/moods';
 
 interface MoodEntry {
   mood: Mood;
@@ -166,11 +83,11 @@ function App() {
     return { current, longest };
   };
 
-  const handleMoodSelect = (mood: Mood) => {
+  const handleMoodSelect = useCallback((mood: Mood) => {
     setSelectedMood(mood);
-  };
+  }, []);
 
-  const saveMoodEntry = () => {
+  const saveMoodEntry = useCallback(() => {
     if (selectedMood) {
       const entry: MoodEntry = {
         mood: selectedMood,
@@ -186,22 +103,24 @@ function App() {
       setCurrentStreak(streaks.current);
       setLongestStreak(streaks.longest);
 
-      // Save to localStorage
-      localStorage.setItem('pokemonMoodHistory', JSON.stringify(newHistory));
-      localStorage.setItem('currentStreak', streaks.current.toString());
-      localStorage.setItem('longestStreak', streaks.longest.toString());
+      // Save to localStorage (debounced to avoid excessive writes)
+      setTimeout(() => {
+        localStorage.setItem('pokemonMoodHistory', JSON.stringify(newHistory));
+        localStorage.setItem('currentStreak', streaks.current.toString());
+        localStorage.setItem('longestStreak', streaks.longest.toString());
+      }, 100);
 
       setSelectedMood(null);
       setCurrentNote('');
     }
-  };
+  }, [selectedMood, currentNote, moodHistory]);
 
-  const getTodaysEntry = () => {
+  const todaysEntry = useMemo(() => {
     const today = new Date().toISOString().split('T')[0];
     return moodHistory.find(entry => entry.date === today);
-  };
+  }, [moodHistory]);
 
-  const getWeeklyStats = () => {
+  const weeklyStats = useMemo(() => {
     const oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 
@@ -224,10 +143,7 @@ function App() {
       mostCommonMood: mostCommonMood ? mostCommonMood[0] : 'None',
       uniqueDays: Array.from(new Set(weeklyEntries.map(entry => entry.date))).length
     };
-  };
-
-  const todaysEntry = getTodaysEntry();
-  const weeklyStats = getWeeklyStats();
+  }, [moodHistory]);
 
   return (
     <div className="App">
@@ -285,6 +201,9 @@ function App() {
                   alt={mood.pokemon}
                   className="pokemon-image"
                   loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiByeD0iNDAiIGZpbGw9IiNGNEY0RjQiLz4KPHN2ZyB4PSIyNCIgeT0iMjQiIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KPHA+Zm9sZGVyIG9wZW4gPHNwYW4gaWQ9ImVtb2ppIj7wn5OHPC9zcGFuPjwvcD4KPHN2Zz4='
+                  }}
                 />
                 <div className="mood-name">{mood.name}</div>
                 <div className="mood-pokemon">{mood.pokemon}</div>
