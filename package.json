@@ -8,9 +8,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "deploy": "gh-pages -d build"
   },
   "keywords": [
     "react",
@@ -22,6 +20,7 @@
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
+    "gh-pages": "^6.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
