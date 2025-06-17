@@ -43,7 +43,7 @@ export const moods: Mood[] = [
   },
   { 
     id: '5', 
-    name: 'Angry', 
+    name: 'Fiery', 
     pokemon: 'Charmander', 
     emoji: '😠', 
     color: '#E74C3C',
