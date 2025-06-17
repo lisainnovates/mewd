@@ -69,16 +69,6 @@ const moods: Mood[] = [
   },
   { 
     id: '8', 
-    name: 'Cheerful', 
-    pokemon: 'Clefairy', 
-    emoji: '😄',
-    color: '#FF69B4',
-    imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/of😴', 
-    color: '#34495E',
-    imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/79.png'
-  },
-  { 
-    id: '8', 
     name: 'Energetic', 
     pokemon: 'Jolteon', 
     emoji: '⚡', 
@@ -97,8 +87,6 @@ const moods: Mood[] = [
 
 interface MoodEntry {
   mood: Mood;
-  date: string;
-  note: string;
   date: string;
   note: string;
 }
@@ -223,7 +211,7 @@ function App() {
 
     const moodCounts: Record<string, number> = {};
     weeklyEntries.forEach(entry => {
-      moodCounts[entry.mood.name] = (moodCounts[entry.mood.name] || 0) + 1;y.mood.name] || 0) + 1;
+      moodCounts[entry.mood.name] = (moodCounts[entry.mood.name] || 0) + 1;
     });
 
     const moodEntries = Object.entries(moodCounts);
