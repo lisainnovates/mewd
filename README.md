@@ -1,6 +1,6 @@
 # mewd tracker
 
-track your mood with the power of pokémon, watch them evolve day by day ✨
+track your mood with the power of Pokémon, watch them evolve day by day ✨
 
 try it here: https://lisainnovates.github.io/mewd/
 
@@ -8,4 +8,4 @@ try it here: https://lisainnovates.github.io/mewd/
 
 inspired by mew
 
-*made with replit and GPT-4 🤖*
+*made with Replit and GPT-4 🤖*
